@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>達成率</title>
+</head>
+<body>
+<label>PERFECT:<input type="number" id="per" min="0"></input></label><br>
+<label>GREAT&nbsp;&nbsp;&nbsp;:<input type="number" id="gre" min="0"></input></label><br>
+<label>GOOD&nbsp;&nbsp;&nbsp;&nbsp;:<input type="number" id="goo" min="0"></input></label><br>
+<label>BAD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<input type="number" id="bad" min="0"></input></label><br>
+<label>MISS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<input type="number" id="mis" min="0"></input></label><br>
+<button onclick="calc()">計算</button><br>
+達成率：<a id="percent">0.0000</a>%
+</body>
+<script type="text/javascript">
+function calc(){
+var per = parseInt(document.getElementById('per').value,10);
+var gre = parseInt(document.getElementById('gre').value,10);
+var goo = parseInt(document.getElementById('goo').value,10);
+var bad = parseInt(document.getElementById('bad').value,10);
+var mis = parseInt(document.getElementById('mis').value,10);
+var com = per + gre + goo + bad + mis;
+var percent = (100 / com * ( per + 0.7 * gre + 0.5 * goo + 0.1 * bad)).toFixed(4);
+if(percent == 'NaN'){
+alert("すべての枠に数値を入れてください");
+}else{
+document.getElementById('percent').textContent = percent;
+}
+}
+</script>
+</html>
