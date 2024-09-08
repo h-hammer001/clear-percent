@@ -23,7 +23,7 @@ var com = per + gre + goo + bad + mis;
 var percent = (100 / com * ( per + 0.7 * gre + 0.5 * goo + 0.1 * bad)).toFixed(4);
 if(percent == 'NaN'){
 alert("すべての枠に数値を入れてください");
-}
+}else{
 document.getElementById('percent').textContent = percent;
 if(percent>99.5000){
 document.getElementById('rank').textContent = 'SSS+';
@@ -53,6 +53,7 @@ document.getElementById('rank').textContent = 'B';
 document.getElementById('rank').textContent = 'C';
 }else{
 document.getElementById('rank').textContent = 'D';
+}
 }
 }
 </script>
