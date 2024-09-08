@@ -1,6 +1,9 @@
 <html>
 <head>
 <title>達成率</title>
+<style>
+input:invalid {border: solid 3px red;outline: 0;}
+</style>
 </head>
 <body>
 <label>PERFECT:<input type="number" id="per" min="0" step="1"></input></label><br>
@@ -21,7 +24,7 @@ var goo = parseInt(document.getElementById('goo').value,10);
 var bad = parseInt(document.getElementById('bad').value,10);
 var mis = parseInt(document.getElementById('mis').value,10);
 var com = per + gre + goo + bad + mis;
-if (document.getElementsById("fc_percent")[0]){
+if (document.getElementsById("fc_percent")[0].checked){
 var percent = (100 / com * ( per + gre + 0.5 * goo + 0.1 * bad)).toFixed(4);
 }else{
 var percent = (100 / com * ( per + 0.7 * gre + 0.5 * goo + 0.1 * bad)).toFixed(4);
