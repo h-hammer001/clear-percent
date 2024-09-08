@@ -13,7 +13,7 @@ button {
   border-radius: 3px;
 }
 .checkbox{
-  transform: scale(1.5);
+transform: scale(1.5);
 }
 </style>
 </head>
@@ -50,8 +50,9 @@ var percent = (100 / com * ( per + gre + 0.5 * goo + 0.1 * bad)).toFixed(dig);
 var percent = (100 / com * ( per + 0.7 * gre + 0.5 * goo + 0.1 * bad)).toFixed(dig);
 }
 if(percent == 'NaN'){
-alert("すべての枠に数値を入力してください");
+alert("すべての枠に有効な数値を入力してください");
 }else{
+if(0<=percent&&100>=percent){
 document.getElementById('percent').textContent = percent;
 if(percent>99.5000){
 document.getElementById('rank').textContent = 'SSS+';
@@ -81,6 +82,9 @@ document.getElementById('rank').textContent = 'B';
 document.getElementById('rank').textContent = 'C';
 }else{
 document.getElementById('rank').textContent = 'D';
+}
+}else{
+alert("不正な値が入力されています");
 }
 }
 }else{
