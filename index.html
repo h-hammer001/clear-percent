@@ -9,7 +9,8 @@
 <label>BAD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<input type="number" id="bad" min="0"></input></label><br>
 <label>MISS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<input type="number" id="mis" min="0"></input></label><br>
 <button onclick="calc()">計算</button><br>
-達成率：<a id="percent">0.0000</a>%
+達成率：<a id="percent">0.0000</a>%<br>
+ランク：<a id="rank"></a>
 </body>
 <script type="text/javascript">
 function calc(){
@@ -22,8 +23,36 @@ var com = per + gre + goo + bad + mis;
 var percent = (100 / com * ( per + 0.7 * gre + 0.5 * goo + 0.1 * bad)).toFixed(4);
 if(percent == 'NaN'){
 alert("すべての枠に数値を入れてください");
-}else{
+}
 document.getElementById('percent').textContent = percent;
+if(percent>99.5000){
+document.getElementById('rank').textContent = 'SSS+';
+}else if(percent>99.0000){
+document.getElementById('rank').textContent = 'SSS';
+}else if(percent>98.5000){
+document.getElementById('rank').textContent = 'SS+';
+}else if(percent>98.0000){
+document.getElementById('rank').textContent = 'SS';
+}else if(percent>97.0000){
+document.getElementById('rank').textContent = 'S+';
+}else if(percent>96.0000){
+document.getElementById('rank').textContent = 'S';
+}else if(percent>93.0000){
+document.getElementById('rank').textContent = 'AAA';
+}else if(percent>89.0000){
+document.getElementById('rank').textContent = 'AA';
+}else if(percent>79.0000){
+document.getElementById('rank').textContent = 'A';
+}else if(percent>74.0000){
+document.getElementById('rank').textContent = 'BBB';
+}else if(percent>69.0000){
+document.getElementById('rank').textContent = 'BB';
+}else if(percent>59.0000){
+document.getElementById('rank').textContent = 'B';
+}else if(percent>49.0000){
+document.getElementById('rank').textContent = 'C';
+}else{
+document.getElementById('rank').textContent = 'D';
 }
 }
 </script>
