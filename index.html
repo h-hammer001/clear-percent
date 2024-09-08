@@ -24,7 +24,7 @@ var goo = parseInt(document.getElementById('goo').value,10);
 var bad = parseInt(document.getElementById('bad').value,10);
 var mis = parseInt(document.getElementById('mis').value,10);
 var com = per + gre + goo + bad + mis;
-var fc_checked = document.getElementsById("fc_percent")[0];
+var fc_checked = document.getElementsById('fc_percent')[0];
 if(fc_checked.checked){
 var percent = (100 / com * ( per + gre + 0.5 * goo + 0.1 * bad)).toFixed(4);
 }else{
