@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
 <title>達成率</title>
@@ -28,10 +27,13 @@ transform: scale(1.5);
 <button onclick="calc()">計算</button><br>
 達成率：<a id="percent">0.0000</a>%<br>
 ランク：<a id="rank"></a><br>
+得点数：<a id="point"></a><br>
+失点数：<a id="lost"></a><br>
 <table style="border:none;margin-top:10px;">
 <tr><th>オプション</th></tr>
 <tr><td>有効桁数(1~10)</td><td>:<input type="number" id="dig" min="0" max="10" step="1" value="4"></td></tr>
 <tr><td>FC=100%にする</td><td>:<input type="checkbox" id="fc_check" class="checkbox"></td></tr>
+<tr><td>ランクマッチルールでの点数を表示</td><td>:<input type="checkbox" id="rank_match" class="checkbox"></td></tr>
 </table>
 </body>
 <script type="text/javascript">
@@ -53,6 +55,12 @@ if(percent == 'NaN'){
 alert("すべての枠に有効な数値を入力してください");
 }else{
 if(0<=percent&&100>=percent){
+if(document.getElementById("rank_match").checked){
+var point = 3 * per + 2 * gre + goo;
+var lost = 3 * com - point;
+document.getElementById('point').textContent = point;
+document.getElementById('lost').textContent = lost;
+}
 document.getElementById('percent').textContent = percent;
 if(percent>99.5000){
 document.getElementById('rank').textContent = 'SSS+';
