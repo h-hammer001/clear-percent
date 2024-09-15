@@ -2,7 +2,7 @@
 <head>
 <title>達成率</title>
 <style>
-input:invalid {border: solid 3px red;outline: 0}
+input:invalid {border: solid 3px red;outline: 0;}
 button {
   padding:5px 10px 5px 10px;
   margin: 3px 10px 5px 10px;
@@ -11,9 +11,7 @@ button {
   color: #000;
   border-radius: 3px;
 }
-.checkbox{
-transform: scale(1.5);
-}
+.checkbox{transform: scale(1.5)}
 </style>
 </head>
 <body>
@@ -27,8 +25,9 @@ transform: scale(1.5);
 <button onclick="calc()">計算</button><br>
 達成率：<a id="percent">0.0000</a>%<br>
 ランク：<a id="rank"></a><br>
-得点数：<a id="point"></a><br>
-失点数：<a id="lost"></a><br>
+タイプ：<a id="type"></a><br>
+得点数：<a id="point" name="match"></a><br>
+失点数：<a id="lost" name="match"></a><br>
 <table style="border:none;margin-top:10px;">
 <tr><th>オプション</th></tr>
 <tr><td>有効桁数(1~10)</td><td>:<input type="number" id="dig" min="0" max="10" step="1" value="4"></td></tr>
@@ -44,7 +43,6 @@ var goo = parseInt(document.getElementById('goo').value,10);
 var bad = parseInt(document.getElementById('bad').value,10);
 var mis = parseInt(document.getElementById('mis').value,10);
 var dig = parseInt(document.getElementById('dig').value,10);
-if(1<=dig&&10>=dig){
 var com = per + gre + goo + bad + mis;
 if(document.getElementById("fc_check").checked){
 var percent = (100 / com * ( per + gre + 0.5 * goo + 0.1 * bad)).toFixed(dig);
@@ -52,14 +50,27 @@ var percent = (100 / com * ( per + gre + 0.5 * goo + 0.1 * bad)).toFixed(dig);
 var percent = (100 / com * ( per + 0.7 * gre + 0.5 * goo + 0.1 * bad)).toFixed(dig);
 }
 if(percent == 'NaN'){
-alert("すべての枠に有効な数値を入力してください");
+alert("すべての枠に数値を入力してください");
 }else{
-if(0<=percent&&100>=percent){
+if(per!=Math.floor(Math.sqrt(per*per))||gre!=Math.floor(Math.sqrt(gre*gre))||goo!=Math.floor(Math.sqrt(goo*goo))||bad!= Math.floor(Math.sqrt(bad*bad))||mis!=Math.floor(Math.sqrt(mis*mis))){
+alert("不正な値が入力されています");
+}else{
+if(1>dig||10<dig){
+alert("有効数字が規定外です");
+}else{
+if(document.getElementById("fc_check").checked){
+document.getElementById('type').textContent = "FC";
+}else{
+document.getElementById('type').textContent = "AP";
+}
 if(document.getElementById("rank_match").checked){
 var point = 3 * per + 2 * gre + goo;
 var lost = 3 * com - point;
-document.getElementById('point').textContent = point;
+document.getElementById('point').textContent = point+'/'+3*com;
 document.getElementById('lost').textContent = lost;
+}else{
+document.getElementById('point').textContent = "";
+document.getElementById('lost').textContent = "";
 }
 document.getElementById('percent').textContent = percent;
 if(percent>99.5000){
@@ -90,14 +101,6 @@ document.getElementById('rank').textContent = 'B';
 document.getElementById('rank').textContent = 'C';
 }else{
 document.getElementById('rank').textContent = 'D';
-}
-}else{
-alert("不正な値が入力されています");
-}
-}
-}else{
-alert("有効数字が規定外です");
-}
-}
+}}}}}
 </script>
 </html>
